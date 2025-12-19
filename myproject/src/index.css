@@ -1,0 +1,44 @@
+/* Tailwind Base, Components, Utilities */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+a {
+  font-weight: 500;
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Optional headings */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Optional smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Remove any flex on body to avoid layout issues */
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #d1cbcb; /* light McD-themed background, can override with Tailwind classes */
+}
+
+/* Tailwind handles button styling, no manual override needed */
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
