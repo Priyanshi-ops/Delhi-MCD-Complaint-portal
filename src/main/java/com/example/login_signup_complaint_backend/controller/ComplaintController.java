@@ -18,6 +18,7 @@ public class ComplaintController {
 
     @PostMapping
     public Complaint createComplaint(@RequestBody Complaint complaint){
+        System.out.println("Complaint received: " + complaint.getName());
         return complaintService.saveComplaint(complaint);
     }
 

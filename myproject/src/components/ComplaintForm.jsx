@@ -1,4 +1,5 @@
 import React, { forwardRef } from "react";
+import axios from "axios";
 import { useState } from "react";
 const ComplaintForm = forwardRef((props, ref) => {
     const user=JSON.parse(localStorage.getItem("user"));
@@ -13,9 +14,14 @@ const[formData,setFormData]=useState({
     address:"",
     description:""
     });
-const handleSubmit = (e) => {
+const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Complaint Submitted:", formData);
+    const response=await axios.post(
+        "http://localhost:8081/api/complaints",
+        formData
+
+        );
+    console.log("Complaint Submitted:",response.data);
     alert("Complaint submitted (backend next step)");
   };
 
