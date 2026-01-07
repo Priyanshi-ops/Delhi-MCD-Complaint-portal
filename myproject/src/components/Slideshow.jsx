@@ -15,6 +15,7 @@ function Slideshow() {
           muted
           loop
           playsInline
+             preload="auto"
           className="absolute inset-0 w-full h-full object-cover z-0"
         >
           <source src={myVideo} type="video/mp4" />

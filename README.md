@@ -1,4 +1,4 @@
-# Project Name
+# Delhi MCD Complaint Portal
 
 ## Description
 The demo link of a project https://priyanshi-ops.github.io/Delhi-MCD-Complaint-portal/.
