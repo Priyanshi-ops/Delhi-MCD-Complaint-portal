@@ -1,88 +1,97 @@
-import React, { useRef, useState } from "react";
-const myVideo = "/Delhi-MCD-Complaint-portal/your-video.mp4";
-import mypic from "../assets/images/ashoka.png";
+import React, { useRef } from "react";
+import { motion } from "framer-motion";
+import DynamicBackground from "./DynamicBackground";
 import ComplaintForm from "./ComplaintForm";
+
+const myVideo = "/Delhi-MCD-Complaint-portal/your-video.mp4";
 
 function Slideshow() {
   const formRef = useRef(null);
-  const [toast, setToast] = useState(false);
-
-  const handleRegisterClick = () => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (!user) {
-      // Show warning toast
-      setToast(true);
-      setTimeout(() => setToast(false), 3500);
-      return;
-    }
-    formRef.current.scrollIntoView({ behavior: "smooth" });
-  };
 
   return (
-    <div className="w-full">
+    <div className="w-full relative overflow-hidden">
 
-      {/* ── Not-logged-in Toast ── */}
-      {toast && (
-        <div
-          style={{ animation: "slideDown 0.4s ease" }}
-          className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 bg-blue-600 text-white px-6 py-4 rounded-2xl shadow-2xl text-sm font-semibold"
-        >
-          <span className="text-xl">🔒</span>
-          <span>Please <strong>Login</strong> first to register a complaint.</span>
-        </div>
-      )}
+      {/* HERO SECTION */}
+      <div className="relative w-full h-[70vh] md:h-[85vh] flex flex-col items-center justify-center overflow-hidden">
 
-      {/* VIDEO SECTION */}
-      <div className="relative w-full h-[60vh] md:h-[80vh] lg:h-screen overflow-hidden">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          fetchPriority="high"
-          poster={mypic}
-          className="absolute inset-0 w-full h-full object-cover z-0"
-        >
-          <source src={myVideo} type="video/mp4" />
-        </video>
-
-        {/* OVERLAY */}
-        <div className="absolute inset-0 bg-black/30 z-10 pointer-events-none"></div>
-
-        {/* LOGO */}
-        <div className="absolute top-6 left-1/2 -translate-x-1/2 z-20">
-          <img
-            src={mypic}
-            alt="Logo"
-            className="w-28 sm:w-36 md:w-48 lg:w-56 object-contain"
-          />
-        </div>
-
-        {/* TEXT + BUTTON */}
-        <div className="relative z-30 flex flex-col items-center md:pt-[450px] pt-40 sm:pt-48 md:pt-60 lg:pt-72">
-          <h1 className="text-white text-4xl sm:text-5xl md:text-7xl font-semibold italic text-center tracking-wide drop-shadow-lg">
-            Welcome to Complaint Portal
-          </h1>
-
-          <button
-            onClick={handleRegisterClick}
-            className="mt-8 px-8 py-3 bg-blue-600 text-white rounded-lg text-sm md:text-base hover:bg-blue-700 transition"
+        {/* VIDEO BACKGROUND (BLURRED) */}
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover blur-[4px] brightness-90 grayscale-[20%]"
           >
-            Register Complaint
-          </button>
+            <source src={myVideo} type="video/mp4" />
+          </video>
         </div>
+
+        {/* INTERACTIVE PARTICLES ON TOP OF VIDEO */}
+        <div className="absolute inset-0 z-1">
+          <DynamicBackground />
+        </div>
+
+        {/* GLASSMORPHISM CONTENT CARD */}
+        <motion.div
+          className="relative z-10 mx-4 mt-16 sm:mt-24 md:mt-32"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <div className="backdrop-blur-md bg-white/40 p-8 md:p-12 rounded-3xl border border-white/50 shadow-2xl text-center max-w-4xl transition-transform duration-200">
+            <h1 className="text-sky-900 text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-6">
+              Empowering <span className="text-blue-600">Digital</span> Governance
+            </h1>
+
+            <p className="text-sky-800 text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
+              Experience a seamless, interactive way to report and track municipal issues. Your voice matters for a cleaner Delhi.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              {/* MAGNETIC-STYLE BUTTONS */}
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => formRef.current.scrollIntoView({ behavior: "smooth" })}
+                className="px-10 py-4 bg-blue-600 text-white rounded-full font-semibold shadow-lg hover:bg-blue-700 transition-all flex items-center justify-center gap-2"
+              >
+                Register Complaint
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
+                </svg>
+              </motion.button>
+
+              <motion.a
+                href="https://mcdonline.nic.in/portal"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-10 py-4 bg-white/50 text-sky-900 rounded-full font-semibold backdrop-blur-sm border border-white/50 hover:bg-white/70 shadow-lg transition-all flex items-center justify-center"
+              >
+                Learn More
+              </motion.a>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* SCROLL INDICATOR */}
+        <motion.div
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+        >
+          <div className="w-6 h-10 border-2 border-sky-400 rounded-full flex justify-center p-1">
+            <div className="w-1 h-2 bg-sky-400 rounded-full" />
+          </div>
+        </motion.div>
       </div>
 
-      {/* COMPLAINT FORM BELOW VIDEO */}
-      <ComplaintForm ref={formRef} />
-
-      <style>{`
-        @keyframes slideDown {
-          from { opacity: 0; transform: translate(-50%, -20px); }
-          to   { opacity: 1; transform: translate(-50%, 0); }
-        }
-      `}</style>
+      {/* COMPLAINT FORM SECTION */}
+      <div className="bg-white">
+        <ComplaintForm ref={formRef} />
+      </div>
     </div>
   );
 }
