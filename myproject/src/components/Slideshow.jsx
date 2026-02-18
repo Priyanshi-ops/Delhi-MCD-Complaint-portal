@@ -1,13 +1,37 @@
-import React, { useRef } from "react";
-import myVideo from "../assets/images/your-video.mp4";
+import React, { useRef, useState } from "react";
+const myVideo = "/Delhi-MCD-Complaint-portal/your-video.mp4";
 import mypic from "../assets/images/ashoka.png";
-import ComplaintForm from "./ComplaintForm"; // correct relative path
+import ComplaintForm from "./ComplaintForm";
 
 function Slideshow() {
   const formRef = useRef(null);
+  const [toast, setToast] = useState(false);
+
+  const handleRegisterClick = () => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
+      // Show warning toast
+      setToast(true);
+      setTimeout(() => setToast(false), 3500);
+      return;
+    }
+    formRef.current.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <div className="w-full">
+
+      {/* ── Not-logged-in Toast ── */}
+      {toast && (
+        <div
+          style={{ animation: "slideDown 0.4s ease" }}
+          className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 bg-blue-600 text-white px-6 py-4 rounded-2xl shadow-2xl text-sm font-semibold"
+        >
+          <span className="text-xl">🔒</span>
+          <span>Please <strong>Login</strong> first to register a complaint.</span>
+        </div>
+      )}
+
       {/* VIDEO SECTION */}
       <div className="relative w-full h-[60vh] md:h-[80vh] lg:h-screen overflow-hidden">
         <video
@@ -15,7 +39,9 @@ function Slideshow() {
           muted
           loop
           playsInline
-             preload="auto"
+          preload="auto"
+          fetchPriority="high"
+          poster={mypic}
           className="absolute inset-0 w-full h-full object-cover z-0"
         >
           <source src={myVideo} type="video/mp4" />
@@ -40,9 +66,7 @@ function Slideshow() {
           </h1>
 
           <button
-onClick={() => {
-  formRef.current.scrollIntoView({ behavior: "smooth" });
-}}
+            onClick={handleRegisterClick}
             className="mt-8 px-8 py-3 bg-blue-600 text-white rounded-lg text-sm md:text-base hover:bg-blue-700 transition"
           >
             Register Complaint
@@ -52,8 +76,16 @@ onClick={() => {
 
       {/* COMPLAINT FORM BELOW VIDEO */}
       <ComplaintForm ref={formRef} />
+
+      <style>{`
+        @keyframes slideDown {
+          from { opacity: 0; transform: translate(-50%, -20px); }
+          to   { opacity: 1; transform: translate(-50%, 0); }
+        }
+      `}</style>
     </div>
   );
 }
 
 export default Slideshow;
+

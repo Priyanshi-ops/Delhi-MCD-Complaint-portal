@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Slideshow from "./components/Slideshow";
+import Footer from "./components/Footer";
 
 function App() {
   const [activeForm, setActiveForm] = useState(null);
@@ -24,6 +25,9 @@ function App() {
       <div className="w-full">
         <Slideshow />
       </div>
+
+      {/* FOOTER */}
+      <Footer />
 
       {/* LOGIN / SIGNUP MODAL */}
       <AnimatePresence mode="wait">
