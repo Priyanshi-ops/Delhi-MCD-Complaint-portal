@@ -14,6 +14,11 @@ The demo link of a project https://priyanshi-ops.github.io/Delhi-MCD-Complaint-p
 - IntelliJ IDEA
 - GitHub
 
+## Screenshots
+
+<img src="src/assets/images/Signupss.png" width="700" alt="MCD Portal"/>
+
+
 ## How to Run
 1. Clone the repo
 2. Open in IntelliJ
