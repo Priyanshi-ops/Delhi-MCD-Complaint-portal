@@ -11,14 +11,22 @@ The demo link of a project https://priyanshi-ops.github.io/Delhi-MCD-Complaint-p
 
 ## Tech Stack
 - Java
-- IntelliJ IDEA
+- JavaScript
+- Springboot
+- Intellij IDE
+- React js
+- Rest API
+- Mysql
 - GitHub
 
 ## Screenshots
 **Signup Page**
 
 <img src="myproject/src/assets/images/Signupss.png" width="700" alt="MCD Portal"/>
+**Login Page**
+
 <img src="myproject/src/assets/images/loginss.png" width="700" alt="MCD Portal"/>
+**Data Persistence:** Login information is securely captured and stored in the **`user`** table under the **`auth_db`** MySQL database, maintaining data integrity and accessibility for authentication purposes.
 <img src="myproject/src/assets/images/Loginsave sql.png" width="700" alt="MCD Portal"/>
 
 <img src="myproject/src/assets/images/Complaint form.png" width="700" alt="MCD Portal"/>
