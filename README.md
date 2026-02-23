@@ -41,7 +41,7 @@ Login information is securely captured and stored in the **`user`** table within
 ---
 
 ###  Smart Form Pre-filling
-Upon successful authentication, the user's credentials — including username and email address — are automatically retrieved from the session and dynamically populated into the Complaint Form, ensuring a flawless and efficient user experience.
+Upon successful authentication, the user's credentials ,including username and email address are automatically retrieved from the session and dynamically populated into the Complaint Form, ensuring a flawless and efficient user experience.
 
 <img src="myproject/src/assets/images/Complaint form.png" width="700" alt="Complaint Form with Pre-filled Data"/>
 
