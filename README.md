@@ -16,7 +16,7 @@ The demo link of a project https://priyanshi-ops.github.io/Delhi-MCD-Complaint-p
 
 ## Screenshots
 
-<img src="src/assets/images/Signupss.png" width="700" alt="MCD Portal"/>
+<img src="myproject/src/assets/images/Signupss.png" width="700" alt="MCD Portal"/>
 
 
 ## How to Run
