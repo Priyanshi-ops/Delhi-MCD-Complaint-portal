@@ -76,3 +76,20 @@ Run the file named **`LoginSignupComplaintBackendApplication.java`** — this is
     - **`complaints`** — stores submitted complaint records.
 
 
+###  Frontend Setup ( React)
+
+5. Open a **new terminal** and navigate to the project's frontend folder:
+```
+   cd myproject
+```
+
+6. Start the frontend development server by running:
+```bash
+   npm run dev
+```
+
+7. You can now access the application and:
+    -  Sign up for a new account
+    -  Log in with your credentials
+    -  Submit a complaint
+    -  View and fetch existing complaints
