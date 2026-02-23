@@ -51,7 +51,28 @@ Upon successful authentication, the user's credentials — including username an
 Complaint form submissions are securely persisted to the **`complaints`** table within the **`auth_db`** MySQL database, ensuring reliable data storage and traceability.
 
 <img src="myproject/src/assets/images/complaint save sql.png" width="700" alt="Complaint Data Saved in Database"/>
-## How to Run
-1. Clone the repo
-2. Open in IntelliJ
-3. Run the main class
+
+##  Getting Started
+
+Follow the steps below to set up and run the project locally.
+
+##  Backend Setup (Spring Boot)
+
+1. **Clone the repository** and open it in IntelliJ IDEA or any IDE of your choice.
+
+2. **Navigate to the main application file** located at:
+```
+   src/main/java/
+```
+Run the file named **`LoginSignupComplaintBackendApplication.java`** — this is the entry point of the Spring Boot application, annotated with `@SpringBootApplication`.
+
+3. **Set up the MySQL database** by opening MySQL Workbench and creating a new database:
+```sql
+   CREATE DATABASE auth_db;
+```
+
+4. **Create the required tables** inside `auth_db`:
+    - **`users`** — stores registered user information.
+    - **`complaints`** — stores submitted complaint records.
+
+
